@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 slim = tf.contrib.slim
 
 def conv_factory(x, hidden_num, kernel_size, stride, is_train, reuse):
@@ -50,7 +51,7 @@ def batch_norm(x, is_train=True, decay=0.99, epsilon=0.001):
                initializer=tf.constant_initializer(1.0), trainable=False)
 
   if is_train:
-    mean, var = tf.nn.moments(x, range(len(shape_x)-1), keep_dims=True)
+    mean, var = tf.nn.moments(x, np.arange(len(shape_x)-1), keep_dims=True)
     mean = tf.reshape(mean, [mean.shape.as_list()[-1]])
     var = tf.reshape(var, [var.shape.as_list()[-1]])
 
