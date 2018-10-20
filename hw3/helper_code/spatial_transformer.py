@@ -24,7 +24,7 @@ def transformer(U, theta, out_size, name='SpatialTransformer', **kwargs):
     Parameters
     ----------
     U : float
-        The output of a convolutional net should have the
+        The output of a convolutional.py net should have the
         shape [num_batch, height, width, num_channels].
     theta: float
         The output of the

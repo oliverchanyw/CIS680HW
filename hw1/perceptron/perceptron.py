@@ -1,7 +1,6 @@
 import numpy as np
 import glob
 import cv2
-import pdb
 
 class Perceptron(object):
     # x: reduced emoji images: 20 x 400 (original size 200 x 200, resize it to be 20 x 20)
@@ -29,7 +28,7 @@ class Perceptron(object):
     '''
     def backward(self, predictions):
         updateDirection = np.multiply(self.y, np.not_equal(predictions, self.y))  # from {-1, 0, 1} to update
-        self.imageWeights += updateDirection;
+        self.imageWeights += updateDirection
         updateVector = np.matmul(np.transpose(self.x), updateDirection)
         self.alpha = self.alpha + updateVector
 
@@ -59,7 +58,6 @@ def load_emoji(data_dir='data', size=(20, 20)):
 if __name__ == '__main__':
     # LOAD DATA HERE...
     x, full_res, y = load_emoji()
-    # pdb.set_trace()
     max_iters = 100
     # CREATE PERCEPTRON
     p = Perceptron(x, y)
